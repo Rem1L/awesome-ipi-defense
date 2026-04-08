@@ -1,0 +1,49 @@
+name: Weekly New Paper Tracker
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  find-new-papers:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml requests
+
+      - name: Find new citing papers
+        id: find_papers
+        run: |
+          OUTPUT=$(python scripts/find_new_papers.py 2>tracker.log)
+          cat tracker.log
+          if [ "$OUTPUT" = "NO_NEW_PAPERS" ]; then
+            echo "found=false" >> $GITHUB_OUTPUT
+          else
+            echo "found=true" >> $GITHUB_OUTPUT
+            # Write body to file to avoid shell escaping issues
+            echo "$OUTPUT" > issue_body.md
+          fi
+
+      - name: Create GitHub Issue with candidates
+        if: steps.find_papers.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          WEEK=$(date +"%Y-W%V")
+          gh issue create \
+            --title "📄 New paper candidates: week of $WEEK" \
+            --body-file issue_body.md \
+            --label "paper-candidate" \
+            || echo "Issue creation failed (label may not exist yet)"
