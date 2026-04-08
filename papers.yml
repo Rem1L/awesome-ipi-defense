@@ -1,0 +1,561 @@
+# awesome-ipi-defense paper database
+# Schema: see CONTRIBUTING.md
+# Validate: python scripts/validate.py
+
+# --- Benchmarks & Evaluation ---
+
+- id: agentdojo-2024
+  title: "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents"
+  authors: ["Edoardo Debenedetti", "Jie Zhang", "Mislav Balunovic", "Luca Beurer-Kellner", "Marc Fischer", "Florian Tramer"]
+  year: 2024
+  venue: "NeurIPS 2024"
+  arxiv: "2406.13352"
+  defense_type: ["D1-input-filtering", "D4-instruction-hierarchy"]
+  threat_model: ["indirect", "multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["benchmark", "evaluation", "agentic"]
+  summary: "Dynamic benchmark for evaluating prompt injection attacks and defenses in LLM agent pipelines"
+
+- id: asb-2024
+  title: "Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-based Agents"
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2410.02644"
+  defense_type: ["D1-input-filtering", "D3-guardrails"]
+  threat_model: ["direct", "indirect", "multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["benchmark", "evaluation", "agentic"]
+  summary: "Comprehensive benchmark formalizing attack and defense space for LLM-based agents"
+
+# --- D1: Input Filtering & Pre-processing ---
+
+- id: struq-2024
+  title: "StruQ: Defending Against Prompt Injection with Structured Queries"
+  authors: ["Sizhe Chen", "Julien Piet", "Chawin Sitawarin", "David Wagner"]
+  year: 2024
+  venue: "USENIX Security 2025"
+  arxiv: "2402.06363"
+  defense_type: ["D1-input-filtering"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["input-layer"]
+  tags: ["structured-output", "delimiter", "format-separation"]
+  summary: "Separates instructions and data using a structured format so the LLM can distinguish them syntactically"
+
+- id: spotlighting-2024
+  title: "Defending Against Indirect Prompt Injection Attacks With Spotlighting"
+  authors: ["Keegan Hines", "Gary Lopez", "Matthew Hall", "Federico Zarfati", "Yonatan Zunger", "Emre Kiciman"]
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2403.14720"
+  defense_type: ["D1-input-filtering"]
+  threat_model: ["indirect", "rag"]
+  deploy_location: ["input-layer"]
+  tags: ["delimiter", "marking", "xml-tags"]
+  summary: "Marks untrusted data segments with distinctive tokens so the model knows what is trusted instruction vs. untrusted content"
+
+- id: signed-prompt-2024
+  title: "Signed-Prompt: A New Approach to Prevent Prompt Injection Attacks Against LLM-Integrated Applications"
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2401.07612"
+  defense_type: ["D1-input-filtering"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["input-layer"]
+  tags: ["signing", "authentication", "trust"]
+  summary: "Cryptographically signs trusted instructions to allow models to distinguish them from injected content"
+
+- id: datafilter-2025
+  title: "Defending Against Prompt Injection with DataFilter"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2510.19207"
+  defense_type: ["D1-input-filtering"]
+  threat_model: ["indirect", "rag"]
+  deploy_location: ["input-layer"]
+  tags: ["rag", "data-cleaning", "filtering"]
+  summary: "Filters retrieved content before injection into context to remove adversarial instructions"
+
+- id: rtbas-2025
+  title: "RTBAS: Defending LLM Agents Against Prompt Injection and Privacy Leakage"
+  year: 2025
+  venue: "arXiv"
+  defense_type: ["D1-input-filtering", "D3-guardrails"]
+  threat_model: ["indirect", "multi-agent"]
+  deploy_location: ["input-layer", "output-layer"]
+  tags: ["agentic", "privacy", "information-flow"]
+  summary: "Defends LLM agents against prompt injection and privacy leakage via input/output control"
+
+- id: real-user-instruction-2026
+  title: "Real User Instruction: Black-Box Instruction Authentication Middleware Against Indirect Prompt Injection"
+  year: 2026
+  venue: "Preprints.org"
+  defense_type: ["D1-input-filtering"]
+  threat_model: ["indirect"]
+  deploy_location: ["input-layer"]
+  tags: ["middleware", "authentication", "black-box"]
+  summary: "Middleware that authenticates whether instructions originate from real users vs. injected sources"
+
+- id: backtranslation-2024
+  title: "Defending LLMs against Jailbreaking Attacks via Backtranslation"
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2402.16459"
+  defense_type: ["D1-input-filtering"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer"]
+  tags: ["paraphrasing", "backtranslation", "jailbreak"]
+  summary: "Paraphrases inputs via backtranslation to neutralize adversarial prompt structure"
+
+- id: polymorphic-prompt-2025
+  title: "To Protect the LLM Agent Against the Prompt Injection Attack with Polymorphic Prompt"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2506.05739"
+  defense_type: ["D4-robustness", "D1-input-filtering"]
+  threat_model: ["indirect"]
+  deploy_location: ["input-layer"]
+  tags: ["polymorphic", "agentic", "prompt-mutation"]
+  summary: "Uses polymorphic prompt transformations to make injection attacks harder to craft"
+
+# --- D2: Detection ---
+
+- id: perplexity-detection-2023
+  title: "Detecting Language Model Attacks with Perplexity"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2308.14132"
+  defense_type: ["D2-detection"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer"]
+  tags: ["perplexity", "statistical", "detector"]
+  summary: "Uses perplexity scores to detect adversarial prompts and jailbreak attempts"
+
+- id: token-perplexity-2023
+  title: "Token-Level Adversarial Prompt Detection Based on Perplexity Measures and Contextual Information"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2311.11509"
+  defense_type: ["D2-detection"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer"]
+  tags: ["perplexity", "token-level", "statistical"]
+  summary: "Token-level perplexity analysis for fine-grained adversarial prompt detection"
+
+- id: gradsafe-2024
+  title: "GradSafe: Detecting Unsafe Prompts for LLMs via Safety-Critical Gradient Analysis"
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2402.13494"
+  defense_type: ["D2-detection"]
+  threat_model: ["direct"]
+  deploy_location: ["inference-layer"]
+  tags: ["gradient", "safety-critical", "detector"]
+  summary: "Detects unsafe prompts by analyzing gradients of safety-critical tokens"
+
+- id: injecguard-2024
+  title: "InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models"
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2410.22770"
+  defense_type: ["D2-detection"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["input-layer"]
+  tags: ["classifier", "over-defense", "benchmark", "guardrail"]
+  summary: "Addresses false positive problem in injection detectors; introduces benchmark and mitigation"
+
+- id: datasentinel-2025
+  title: "DataSentinel: A Game-Theoretic Detection of Prompt Injection Attacks"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2504.11358"
+  defense_type: ["D2-detection"]
+  threat_model: ["indirect"]
+  deploy_location: ["input-layer"]
+  tags: ["game-theory", "adversarial-robustness", "detector"]
+  summary: "Game-theoretic framework for robust prompt injection detection accounting for adaptive adversaries"
+
+- id: uniguardian-2025
+  title: "UniGuardian: A Unified Defense for Detecting Prompt Injection, Backdoor Attacks and Adversarial Attacks in Large Language Models"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2502.13141"
+  defense_type: ["D2-detection"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["input-layer"]
+  tags: ["unified", "classifier", "backdoor", "adversarial"]
+  summary: "Unified detection framework covering prompt injection, backdoor, and adversarial attacks"
+
+- id: embedding-drift-2026
+  title: "Zero-Shot Embedding Drift Detection: A Lightweight Defense Against Prompt Injections in LLMs"
+  year: 2026
+  venue: "arXiv"
+  arxiv: "2601.12359"
+  defense_type: ["D2-detection"]
+  threat_model: ["indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["embedding", "drift-detection", "zero-shot", "lightweight"]
+  summary: "Detects prompt injections by measuring semantic drift in embeddings without task-specific training"
+
+- id: classifier-detection-2025
+  title: "Detecting Prompt Injection Attacks Against Application Using Classifiers"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2512.12583"
+  defense_type: ["D2-detection"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["input-layer"]
+  tags: ["classifier", "dataset", "benchmark"]
+  summary: "Curates augmented prompt injection dataset and evaluates classifier-based detection approaches"
+
+- id: jailguard-2023
+  title: "JailGuard: A Universal Detection Framework for LLM Prompt-based Attacks"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2312.10766"
+  defense_type: ["D2-detection"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer"]
+  tags: ["detector", "universal", "mutation", "jailbreak"]
+  summary: "Universal detection framework using input mutation to identify prompt-based attacks"
+
+# --- D3: Guardrails & Oversight ---
+
+- id: nemo-guardrails-2023
+  title: "NeMo Guardrails: A Toolkit for Controllable and Safe LLM Applications with Programmable Rails"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2310.10501"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer", "output-layer"]
+  tags: ["toolkit", "programmable", "rails", "nvidia"]
+  summary: "Open-source toolkit for adding programmable safety guardrails to LLM applications"
+
+- id: llama-guard-2023
+  title: "Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations"
+  authors: ["Hakan Inan", "Kartikeya Upasani", "Jianfeng Chi"]
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2312.06674"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer", "output-layer"]
+  tags: ["llm-based-guard", "safety-classifier", "meta"]
+  summary: "LLM-based input-output safety classifier for human-AI conversations"
+
+- id: building-guardrails-2024
+  title: "Building Guardrails for Large Language Models"
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2402.01822"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["input-layer", "output-layer"]
+  tags: ["survey", "guardrail-design", "safety"]
+  summary: "Survey and framework for designing comprehensive guardrail systems for LLMs"
+
+- id: guardreasoner-2025
+  title: "GuardReasoner: Towards Reasoning-based LLM Safeguards"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2501.18492"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer", "output-layer"]
+  tags: ["reasoning", "chain-of-thought", "safety"]
+  summary: "Incorporates chain-of-thought reasoning into LLM safety guards for better explainability"
+
+- id: task-shield-2024
+  title: "The Task Shield: Enforcing Task Alignment to Defend Against Indirect Prompt Injection in LLM Agents"
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2412.16682"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["task-alignment", "agentic", "overseer"]
+  summary: "Enforces alignment between agent actions and the original user task to detect indirect injection"
+
+- id: llm-self-defense-2023
+  title: "LLM Self Defense: By Self Examination, LLMs Know They Are Being Tricked"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2308.07308"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["direct"]
+  deploy_location: ["inference-layer"]
+  tags: ["self-examination", "meta-prompt", "jailbreak"]
+  summary: "LLMs can detect jailbreaks by examining their own context for signs of manipulation"
+
+- id: robust-safety-classifier-2023
+  title: "Robust Safety Classifier for Large Language Models: Adversarial Prompt Shield"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2311.00172"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer"]
+  tags: ["robust-classifier", "adversarial-robustness"]
+  summary: "Robust safety classifier designed to withstand adversarial prompt attacks"
+
+- id: recursive-lm-guard-2026
+  title: "Recursive language models for jailbreak detection: a procedural defense for tool-augmented agents"
+  year: 2026
+  venue: "arXiv"
+  arxiv: "2602.16520"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["indirect", "multi-agent"]
+  deploy_location: ["inference-layer"]
+  tags: ["recursive", "tool-use", "agentic", "procedural"]
+  summary: "Hierarchical LLM calls for multi-level jailbreak detection in tool-augmented agent systems"
+
+- id: self-reminder-2023
+  title: "Defending ChatGPT against Jailbreak Attack via Self-Reminder"
+  year: 2023
+  venue: "Nature Machine Intelligence"
+  defense_type: ["D3-guardrails"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer"]
+  tags: ["self-reminder", "system-prompt", "jailbreak"]
+  summary: "Adds self-reminder instructions to system prompt to help the model resist jailbreaks"
+
+- id: adaptive-multilayer-2025
+  title: "Adaptive Multi-Layer Framework for Detecting and Mitigating Prompt Injection Attacks in Large Language Models"
+  year: 2025
+  venue: "Journal of Information Systems Engineering and Business Intelligence"
+  defense_type: ["D3-guardrails", "D2-detection"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["input-layer", "inference-layer", "output-layer"]
+  tags: ["multi-layer", "adaptive", "framework"]
+  summary: "Multi-layer adaptive framework combining detection and guardrails at multiple pipeline stages"
+
+# --- D4: Training-based Robustness ---
+
+- id: jatmo-2023
+  title: "Jatmo: Prompt Injection Defense by Task-Specific Finetuning"
+  authors: ["Julien Piet", "Meder Mirza", "Lukas Biewald", "Mark Tygert", "Dawn Song"]
+  year: 2023
+  venue: "ESORICS 2024"
+  arxiv: "2312.17673"
+  defense_type: ["D4-finetuning"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["fine-tuning", "task-specific", "data-instructions-separation"]
+  summary: "Fine-tunes task-specific models that treat external data as inert, ignoring injected instructions"
+
+- id: secalign-2024
+  title: "SecAlign: Defending Against Prompt Injection with Preference Optimization"
+  authors: ["Sizhe Chen", "Arman Zharmagambetov", "Saeed Mahloujifar", "Kamalika Chaudhuri", "David Wagner"]
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2410.05451"
+  defense_type: ["D4-preference-optimization"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["rlhf", "dpo", "preference-optimization", "fine-tuning"]
+  summary: "Uses preference optimization (DPO) to train LLMs to ignore injected instructions"
+
+- id: instruction-hierarchy-2024
+  title: "The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions"
+  authors: ["Eric Wallace", "Kai Xiao", "Reimar Leike", "Liang Luo", "Johannes Scharfenberg", "Andrew Wan"]
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2404.13208"
+  defense_type: ["D4-instruction-hierarchy"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["privilege", "hierarchy", "openai", "system-prompt"]
+  summary: "Trains LLMs to prioritize instructions by privilege level (system > user > tool output)"
+
+- id: stronger-hierarchy-2025
+  title: "Stronger Enforcement of Instruction Hierarchy via Augmented Intermediate Representations"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2505.18907"
+  defense_type: ["D4-instruction-hierarchy"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["instruction-hierarchy", "representations", "activation"]
+  summary: "Strengthens instruction hierarchy by modifying intermediate representations to enforce priority"
+
+- id: smoothllm-2023
+  title: "SmoothLLM: Defending Large Language Models Against Jailbreaking Attacks"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2310.03684"
+  defense_type: ["D4-robustness"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer"]
+  tags: ["randomized-smoothing", "jailbreak", "perturbation"]
+  summary: "Applies randomized smoothing via input perturbation to defend against jailbreaking"
+
+- id: baseline-defenses-2023
+  title: "Baseline Defenses for Adversarial Attacks Against Aligned Language Models"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2309.00614"
+  defense_type: ["D1-input-filtering", "D2-detection", "D4-robustness"]
+  threat_model: ["direct"]
+  deploy_location: ["input-layer"]
+  tags: ["baseline", "survey", "adversarial", "jailbreak"]
+  summary: "Evaluates baseline defenses (detection, preprocessing, smoothing) against adversarial LLM attacks"
+
+- id: information-bottleneck-2024
+  title: "Protecting Your LLMs with Information Bottleneck"
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2404.13968"
+  defense_type: ["D4-robustness"]
+  threat_model: ["direct"]
+  deploy_location: ["inference-layer"]
+  tags: ["information-bottleneck", "representation", "robustness"]
+  summary: "Applies information bottleneck to LLM representations to remove adversarial information"
+
+- id: autonomy-tax-2026
+  title: "The Autonomy Tax: Defense Training Breaks LLM Agents"
+  year: 2026
+  venue: "arXiv"
+  arxiv: "2603.19423"
+  defense_type: ["D4-robustness"]
+  threat_model: ["indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["training-tradeoffs", "capability-alignment", "autonomy"]
+  summary: "Studies capability-safety tradeoff showing defense training can degrade agent task performance"
+
+- id: may-attention-2025
+  title: "May I have your Attention? Breaking Fine-Tuning based Prompt Injection Defenses using Architecture-Aware Attacks"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2507.07417"
+  defense_type: ["D4-robustness"]
+  threat_model: ["direct", "indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["attack", "fine-tuning-bypass", "adversarial", "evaluation"]
+  summary: "Demonstrates architecture-aware attacks that bypass fine-tuning-based defenses; informs robustness requirements"
+
+# --- D5: Architecture & Privilege Isolation ---
+
+- id: camel-2025
+  title: "CaMeL: Defeating Prompt Injections by Isolating LLM Access to Trusted Data"
+  authors: ["Edoardo Debenedetti", "Ilia Shumailov", "Tianxiang Fan", "Nicholas Carlini", "Florian Tramer"]
+  year: 2025
+  venue: "arXiv"
+  defense_type: ["D5-architecture", "D5-information-flow-control"]
+  threat_model: ["indirect", "multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["dual-agent", "planner-executor", "capability", "information-flow"]
+  summary: "Dual-LLM architecture where a reader processes untrusted content and an executor runs capability-restricted plans"
+
+- id: ace-2025
+  title: "ACE: A Security Architecture for LLM-Integrated App Systems"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2504.20984"
+  defense_type: ["D5-architecture"]
+  threat_model: ["indirect", "multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["capability", "access-control", "app-security", "agentic"]
+  summary: "Capability-based security architecture for LLM-integrated application systems"
+
+- id: cellmate-2025
+  title: "ceLLMate: Sandboxing Browser AI Agents"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2512.12594"
+  defense_type: ["D5-architecture"]
+  threat_model: ["indirect", "computer-use"]
+  deploy_location: ["system-arch"]
+  tags: ["sandboxing", "browser-agent", "isolation", "computer-use"]
+  summary: "OS/browser sandboxing for AI agents to limit blast radius of successful injections"
+
+- id: ifc-agents-2025
+  title: "Securing AI Agents with Information-Flow Control"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2505.23643"
+  defense_type: ["D5-information-flow-control"]
+  threat_model: ["indirect", "multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["information-flow", "taint-tracking", "provenance", "agentic"]
+  summary: "Applies IFC and taint tracking to AI agents to prevent injected data from affecting trusted operations"
+
+- id: taming-openclaw-2026
+  title: "Taming OpenClaw: Security Analysis and Mitigation of Autonomous LLM Agent Threats"
+  year: 2026
+  venue: "arXiv"
+  arxiv: "2603.11619"
+  defense_type: ["D5-architecture"]
+  threat_model: ["indirect", "multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["agentic", "security-analysis", "mitigation", "autonomous"]
+  summary: "Security analysis and architectural mitigations for autonomous LLM agent threat landscape"
+
+- id: formal-agent-security-2026
+  title: "A Framework for Formalizing LLM Agent Security"
+  year: 2026
+  venue: "arXiv"
+  arxiv: "2603.19469"
+  defense_type: ["D5-architecture"]
+  threat_model: ["indirect", "multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["formal-model", "framework", "security-properties"]
+  summary: "Formal framework for reasoning about security properties of LLM agent systems"
+
+- id: hierarchical-autonomy-2026
+  title: "From Thinker to Society: Security in Hierarchical Autonomy Evolution of AI Agents"
+  year: 2026
+  venue: "arXiv"
+  arxiv: "2603.07496"
+  defense_type: ["D5-architecture"]
+  threat_model: ["multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["hierarchical", "multi-agent", "autonomy", "society"]
+  summary: "Security framework for hierarchical multi-agent systems across autonomy levels"
+
+# --- D6: Runtime Verification & Ensemble ---
+
+- id: melon-2025
+  title: "MELON: Indirect Prompt Injection Defense via Masked Re-execution and Tool Comparison"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2502.05174"
+  defense_type: ["D6-re-execution"]
+  threat_model: ["indirect"]
+  deploy_location: ["inference-layer"]
+  tags: ["re-execution", "tool-comparison", "detection", "agentic"]
+  summary: "Re-executes tasks with masked tool outputs and detects injections by comparing execution traces"
+
+- id: promptbench-2023
+  title: "PromptBench: Towards Evaluating the Robustness of Large Language Models on Adversarial Prompts"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2306.04528"
+  defense_type: ["D6-ensemble"]
+  threat_model: ["direct"]
+  deploy_location: ["inference-layer"]
+  tags: ["benchmark", "robustness", "evaluation", "ensemble"]
+  summary: "Benchmark and ensemble-based defense evaluation for adversarial prompt robustness"
+
+# --- Surveys & Taxonomies ---
+
+- id: landscape-taxonomy-2026
+  title: "The Landscape of Prompt Injection Threats in LLM Agents: From Taxonomy to Analysis"
+  year: 2026
+  venue: "arXiv"
+  arxiv: "2602.10453"
+  defense_type: ["D1-input-filtering", "D3-guardrails", "D5-architecture"]
+  threat_model: ["direct", "indirect", "multi-agent"]
+  deploy_location: ["system-arch"]
+  tags: ["survey", "taxonomy", "landscape", "agentic"]
+  summary: "Comprehensive taxonomy and analysis of prompt injection threats in agentic LLM settings"
+
+- id: attack-defense-landscape-2026
+  title: "The Attack and Defense Landscape of Agentic AI: A Comprehensive Survey"
+  year: 2026
+  venue: "arXiv"
+  arxiv: "2603.11088"
+  defense_type: ["D1-input-filtering", "D2-detection", "D3-guardrails", "D4-robustness", "D5-architecture", "D6-ensemble"]
+  threat_model: ["direct", "indirect", "multi-agent", "rag", "computer-use"]
+  deploy_location: ["system-arch"]
+  tags: ["survey", "comprehensive", "agentic", "attack-defense"]
+  summary: "Comprehensive survey of attacks and defenses in agentic AI systems"
