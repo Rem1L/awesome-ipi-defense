@@ -100,3 +100,25 @@ def test_multiple_defense_types():
     paper = {**VALID_PAPER, "defense_type": ["D5-architecture", "D5-information-flow-control"]}
     errors = validate_papers([paper])
     assert errors == []
+
+def test_optional_fields_can_be_omitted():
+    paper = {
+        "id": "minimal-2024",
+        "title": "Minimal Paper",
+        "year": 2024,
+        "defense_type": ["D1"],
+        "threat_model": ["direct"],
+    }
+    errors = validate_papers([paper])
+    assert errors == []
+
+def test_multiple_errors_collected():
+    paper = {
+        "id": "bad-2024",
+        "title": "Bad Paper",
+        "year": 2019,
+        "defense_type": ["D7-invalid"],
+        "threat_model": ["phishing"],
+    }
+    errors = validate_papers([paper])
+    assert len(errors) >= 3
