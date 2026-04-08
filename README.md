@@ -1,7 +1,7 @@
 # Awesome IPI Defense
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![papers](https://img.shields.io/badge/papers-49-blue)](README.md)
+[![papers](https://img.shields.io/badge/papers-66-blue)](README.md)
 [![arXiv](https://img.shields.io/badge/arXiv-43-red)](README.md)
 
 A curated collection of research papers on defending Large Language Model (LLM) agents against prompt injection attacks. This repository focuses on **indirect prompt injection (IPI)** and related threats, organizing defenses into a structured taxonomy (D1-D6).
@@ -20,6 +20,18 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 ## Papers by Year
 
 ### 2026
+
+- **[AgentSentry: Mitigating Indirect Prompt Injection in LLM Agents via Temporal Causal Diagnostics and Context Purification](https://arxiv.org/abs/2602.22724)** (2026) `D5,D3` `indirect,multi-agent` `system-arch`
+  Combines temporal causal diagnostics and context purification to detect and mitigate indirect prompt injections.
+
+- **[HIPO: Instruction Hierarchy via Constrained Reinforcement Learning](https://arxiv.org/abs/2603.16152)** (2026) `D4` `direct,indirect` `inference-layer`
+  Uses constrained RL to train LLMs to follow instruction hierarchies robustly under adversarial conditions.
+
+- **[IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs](https://arxiv.org/abs/2603.10521)** (2026) `D4` `direct,indirect` `inference-layer`
+  Training dataset specifically designed to improve instruction hierarchy compliance in frontier LLMs.
+
+- **[RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse](https://arxiv.org/abs/2602.01795)** (2026) `D5,D6` `indirect` `inference-layer,system-arch`
+  Defends against prompt injection by isolating trusted reasoning from untrusted context via KV cache separation.
 
 - **[Real User Instruction: Black-Box Instruction Authentication Middleware Against Indirect Prompt Injection](https://arxiv.org/abs/2601.12359)** (2026) `D1` `indirect` `input-layer`
   Middleware that authenticates whether instructions originate from real users vs. injected sources.
@@ -53,6 +65,35 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 
 - **[Defending Against Prompt Injection with DataFilter](https://arxiv.org/abs/2510.19207)** (2025) `D1` `indirect,rag` `input-layer`
   Filters retrieved content before injection into context to remove adversarial instructions.
+
+- **[Control Illusion: The Failure of Instruction Hierarchies in Large Language Models](https://arxiv.org/abs/2502.15851)** (2025) `D4` `direct,indirect` `inference-layer`
+  Empirically shows that instruction hierarchy training often fails under adversarial conditions; motivates stronger defenses.
+  *Venue: AAAI 2025*
+
+- **[DRIFT: Dynamic Rule-Based Defense with Injection Isolation for Securing LLM Agents](https://arxiv.org/abs/2506.12104)** (2025) `D3,D5` `indirect,multi-agent` `inference-layer,system-arch`
+  Dynamic rule-based defense that isolates injected instructions from legitimate agent instructions at runtime.
+
+- **[IPIGuard: A Novel Tool Dependency Graph-Based Defense Against Indirect Prompt Injection in LLM Agents](https://arxiv.org/abs/2508.15310)** (2025) `D5,D3` `indirect` `system-arch`
+  Builds tool dependency graphs to detect and block indirect prompt injection in LLM agents.
+  *Venue: EMNLP 2025*
+
+- **[MiniScope: A Least Privilege Framework for Authorizing Tool Calling Agents](https://arxiv.org/abs/2512.11147)** (2025) `D5` `indirect,multi-agent` `system-arch`
+  Least-privilege framework that restricts LLM agent tool permissions to the minimum required for each task.
+
+- **[Sentinel: SOTA model to protect against prompt injections](https://arxiv.org/abs/2506.05446)** (2025) `D2` `direct,indirect` `input-layer`
+  State-of-the-art prompt injection detection model with strong performance across injection types.
+
+- **[Privacy-Preserving Prompt Injection Detection for LLMs Using Federated Learning and Embedding-Based NLP Classification](https://arxiv.org/abs/2511.12295)** (2025) `D2` `direct,indirect` `input-layer`
+  Privacy-preserving prompt injection detection using federated learning to protect sensitive data during classification.
+
+- **[A Multi-Agent LLM Defense Pipeline Against Prompt Injection Attacks](https://arxiv.org/abs/2509.14285)** (2025) `D3,D6` `direct,indirect` `inference-layer`
+  Multi-agent pipeline where specialized LLMs collaboratively detect and neutralize prompt injection attacks.
+
+- **[TraceAegis: Securing LLM-Based Agents via Hierarchical and Behavioral Anomaly Detection](https://arxiv.org/abs/2510.11203)** (2025) `D3,D2` `indirect,multi-agent` `inference-layer`
+  Detects prompt injection by monitoring behavioral anomalies and execution traces in LLM agent systems.
+
+- **[CAPTURE: Context-Aware Prompt Injection Testing and Robustness Enhancement](https://arxiv.org/abs/2505.12368)** (2025) `D2,D4` `direct,indirect` `input-layer`
+  Context-aware framework for testing and enhancing prompt injection robustness in guardrail models.
 
 - **[RTBAS: Defending LLM Agents Against Prompt Injection and Privacy Leakage](https://arxiv.org/abs/2510.19207)** (2025) `D1,D3` `indirect,multi-agent` `input-layer,output-layer`
   Defends LLM agents against prompt injection and privacy leakage via input/output control.
@@ -103,6 +144,17 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 
 ### 2024
 
+- **[Attention Tracker: Detecting Prompt Injection Attacks in LLMs](https://arxiv.org/abs/2411.00348)** (2024) `D2` `direct,indirect` `inference-layer`
+  Uses attention pattern analysis to detect prompt injection attacks in LLMs.
+  *Venue: NAACL 2025*
+
+- **[Instructional Segment Embedding: Improving LLM Safety with Instruction Hierarchy](https://arxiv.org/abs/2410.09102)** (2024) `D4,D5` `direct,indirect` `inference-layer`
+  Adds dedicated segment embeddings to encode instruction privilege levels, improving LLM safety without fine-tuning.
+  *Venue: ICLR 2025*
+
+- **[Palisade - Prompt Injection Detection Framework](https://arxiv.org/abs/2410.21146)** (2024) `D2,D3` `direct,indirect` `input-layer`
+  Multi-model framework combining classifiers and LLM-based reasoning for prompt injection detection.
+
 - **[AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents](https://arxiv.org/abs/2406.13352)** (2024) `D1,D4` `indirect,multi-agent` `system-arch`
   Dynamic benchmark for evaluating prompt injection attacks and defenses in LLM agent pipelines.
   *Authors: Edoardo Debenedetti, Jie Zhang, Mislav Balunovic, Luca Beurer-Kellner, Marc Fischer, Florian Tramer — NeurIPS 2024*
@@ -148,6 +200,9 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 
 ### 2023 and Earlier
 
+- **[Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models](https://arxiv.org/abs/2312.14197)** (2023) `D1,D3` `indirect` `input-layer`
+  Introduces benchmark for indirect prompt injection and evaluates defense strategies including input filtering and guardrails.
+
 - **[Detecting Language Model Attacks with Perplexity](https://arxiv.org/abs/2308.14132)** (2023) `D2` `direct` `input-layer`
   Uses perplexity scores to detect adversarial prompts and jailbreak attempts.
 
@@ -189,6 +244,9 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 ### D1: Input Filtering & Pre-processing
 
 *Prevent injection by marking/separating trusted and untrusted data before LLM processing*
+
+- **[Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models](https://arxiv.org/abs/2312.14197)** (2023) `D1,D3` `indirect` `input-layer`
+  Introduces benchmark for indirect prompt injection and evaluates defense strategies including input filtering and guardrails.
 
 - **[StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)** (2024) `D1` `direct,indirect` `input-layer`
   Separates instructions and data using a structured format so the LLM can distinguish them syntactically.
@@ -237,6 +295,25 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 
 *Monitor and flag suspicious prompts or execution patterns*
 
+- **[Attention Tracker: Detecting Prompt Injection Attacks in LLMs](https://arxiv.org/abs/2411.00348)** (2024) `D2` `direct,indirect` `inference-layer`
+  Uses attention pattern analysis to detect prompt injection attacks in LLMs.
+  *Venue: NAACL 2025*
+
+- **[Palisade - Prompt Injection Detection Framework](https://arxiv.org/abs/2410.21146)** (2024) `D2,D3` `direct,indirect` `input-layer`
+  Multi-model framework combining classifiers and LLM-based reasoning for prompt injection detection.
+
+- **[Sentinel: SOTA model to protect against prompt injections](https://arxiv.org/abs/2506.05446)** (2025) `D2` `direct,indirect` `input-layer`
+  State-of-the-art prompt injection detection model with strong performance across injection types.
+
+- **[Privacy-Preserving Prompt Injection Detection for LLMs Using Federated Learning and Embedding-Based NLP Classification](https://arxiv.org/abs/2511.12295)** (2025) `D2` `direct,indirect` `input-layer`
+  Privacy-preserving prompt injection detection using federated learning to protect sensitive data during classification.
+
+- **[TraceAegis: Securing LLM-Based Agents via Hierarchical and Behavioral Anomaly Detection](https://arxiv.org/abs/2510.11203)** (2025) `D3,D2` `indirect,multi-agent` `inference-layer`
+  Detects prompt injection by monitoring behavioral anomalies and execution traces in LLM agent systems.
+
+- **[CAPTURE: Context-Aware Prompt Injection Testing and Robustness Enhancement](https://arxiv.org/abs/2505.12368)** (2025) `D2,D4` `direct,indirect` `input-layer`
+  Context-aware framework for testing and enhancing prompt injection robustness in guardrail models.
+
 - **[Detecting Language Model Attacks with Perplexity](https://arxiv.org/abs/2308.14132)** (2023) `D2` `direct` `input-layer`
   Uses perplexity scores to detect adversarial prompts and jailbreak attempts.
 
@@ -276,6 +353,28 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 ### D3: Guardrails & Oversight
 
 *Programmatic and LLM-based safeguards on model inputs/outputs*
+
+- **[Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models](https://arxiv.org/abs/2312.14197)** (2023) `D1,D3` `indirect` `input-layer`
+  Introduces benchmark for indirect prompt injection and evaluates defense strategies including input filtering and guardrails.
+
+- **[Palisade - Prompt Injection Detection Framework](https://arxiv.org/abs/2410.21146)** (2024) `D2,D3` `direct,indirect` `input-layer`
+  Multi-model framework combining classifiers and LLM-based reasoning for prompt injection detection.
+
+- **[DRIFT: Dynamic Rule-Based Defense with Injection Isolation for Securing LLM Agents](https://arxiv.org/abs/2506.12104)** (2025) `D3,D5` `indirect,multi-agent` `inference-layer,system-arch`
+  Dynamic rule-based defense that isolates injected instructions from legitimate agent instructions at runtime.
+
+- **[IPIGuard: A Novel Tool Dependency Graph-Based Defense Against Indirect Prompt Injection in LLM Agents](https://arxiv.org/abs/2508.15310)** (2025) `D5,D3` `indirect` `system-arch`
+  Builds tool dependency graphs to detect and block indirect prompt injection in LLM agents.
+  *Venue: EMNLP 2025*
+
+- **[A Multi-Agent LLM Defense Pipeline Against Prompt Injection Attacks](https://arxiv.org/abs/2509.14285)** (2025) `D3,D6` `direct,indirect` `inference-layer`
+  Multi-agent pipeline where specialized LLMs collaboratively detect and neutralize prompt injection attacks.
+
+- **[TraceAegis: Securing LLM-Based Agents via Hierarchical and Behavioral Anomaly Detection](https://arxiv.org/abs/2510.11203)** (2025) `D3,D2` `indirect,multi-agent` `inference-layer`
+  Detects prompt injection by monitoring behavioral anomalies and execution traces in LLM agent systems.
+
+- **[AgentSentry: Mitigating Indirect Prompt Injection in LLM Agents via Temporal Causal Diagnostics and Context Purification](https://arxiv.org/abs/2602.22724)** (2026) `D5,D3` `indirect,multi-agent` `system-arch`
+  Combines temporal causal diagnostics and context purification to detect and mitigate indirect prompt injections.
 
 - **[NeMo Guardrails: A Toolkit for Controllable and Safe LLM Applications with Programmable Rails](https://arxiv.org/abs/2310.10501)** (2023) `D3` `direct` `input-layer,output-layer`
   Open-source toolkit for adding programmable safety guardrails to LLM applications.
@@ -325,6 +424,23 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 
 *Fine-tune or preference-optimize models to resist injection*
 
+- **[Instructional Segment Embedding: Improving LLM Safety with Instruction Hierarchy](https://arxiv.org/abs/2410.09102)** (2024) `D4,D5` `direct,indirect` `inference-layer`
+  Adds dedicated segment embeddings to encode instruction privilege levels, improving LLM safety without fine-tuning.
+  *Venue: ICLR 2025*
+
+- **[Control Illusion: The Failure of Instruction Hierarchies in Large Language Models](https://arxiv.org/abs/2502.15851)** (2025) `D4` `direct,indirect` `inference-layer`
+  Empirically shows that instruction hierarchy training often fails under adversarial conditions; motivates stronger defenses.
+  *Venue: AAAI 2025*
+
+- **[CAPTURE: Context-Aware Prompt Injection Testing and Robustness Enhancement](https://arxiv.org/abs/2505.12368)** (2025) `D2,D4` `direct,indirect` `input-layer`
+  Context-aware framework for testing and enhancing prompt injection robustness in guardrail models.
+
+- **[HIPO: Instruction Hierarchy via Constrained Reinforcement Learning](https://arxiv.org/abs/2603.16152)** (2026) `D4` `direct,indirect` `inference-layer`
+  Uses constrained RL to train LLMs to follow instruction hierarchies robustly under adversarial conditions.
+
+- **[IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs](https://arxiv.org/abs/2603.10521)** (2026) `D4` `direct,indirect` `inference-layer`
+  Training dataset specifically designed to improve instruction hierarchy compliance in frontier LLMs.
+
 - **[Jatmo: Prompt Injection Defense by Task-Specific Finetuning](https://arxiv.org/abs/2312.17673)** (2023) `D4` `direct,indirect` `inference-layer`
   Fine-tunes task-specific models that treat external data as inert, ignoring injected instructions.
   *Authors: Julien Piet, Meder Mirza, Lukas Biewald, Mark Tygert, Dawn Song — ESORICS 2024*
@@ -369,6 +485,26 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 
 *Isolate untrusted data via multi-agent or capability-based designs*
 
+- **[Instructional Segment Embedding: Improving LLM Safety with Instruction Hierarchy](https://arxiv.org/abs/2410.09102)** (2024) `D4,D5` `direct,indirect` `inference-layer`
+  Adds dedicated segment embeddings to encode instruction privilege levels, improving LLM safety without fine-tuning.
+  *Venue: ICLR 2025*
+
+- **[DRIFT: Dynamic Rule-Based Defense with Injection Isolation for Securing LLM Agents](https://arxiv.org/abs/2506.12104)** (2025) `D3,D5` `indirect,multi-agent` `inference-layer,system-arch`
+  Dynamic rule-based defense that isolates injected instructions from legitimate agent instructions at runtime.
+
+- **[IPIGuard: A Novel Tool Dependency Graph-Based Defense Against Indirect Prompt Injection in LLM Agents](https://arxiv.org/abs/2508.15310)** (2025) `D5,D3` `indirect` `system-arch`
+  Builds tool dependency graphs to detect and block indirect prompt injection in LLM agents.
+  *Venue: EMNLP 2025*
+
+- **[MiniScope: A Least Privilege Framework for Authorizing Tool Calling Agents](https://arxiv.org/abs/2512.11147)** (2025) `D5` `indirect,multi-agent` `system-arch`
+  Least-privilege framework that restricts LLM agent tool permissions to the minimum required for each task.
+
+- **[AgentSentry: Mitigating Indirect Prompt Injection in LLM Agents via Temporal Causal Diagnostics and Context Purification](https://arxiv.org/abs/2602.22724)** (2026) `D5,D3` `indirect,multi-agent` `system-arch`
+  Combines temporal causal diagnostics and context purification to detect and mitigate indirect prompt injections.
+
+- **[RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse](https://arxiv.org/abs/2602.01795)** (2026) `D5,D6` `indirect` `inference-layer,system-arch`
+  Defends against prompt injection by isolating trusted reasoning from untrusted context via KV cache separation.
+
 - **[CaMeL: Defeating Prompt Injections by Isolating LLM Access to Trusted Data](https://arxiv.org/abs/2505.23643)** (2025) `D5` `indirect,multi-agent` `system-arch`
   Dual-LLM architecture where a reader processes untrusted content and an executor runs capability-restricted plans.
   *Authors: Edoardo Debenedetti, Ilia Shumailov, Tianxiang Fan, Nicholas Carlini, Florian Tramer*
@@ -400,6 +536,12 @@ A curated collection of research papers on defending Large Language Model (LLM) 
 ### D6: Runtime Verification & Ensemble
 
 *Verify execution correctness through re-execution or ensemble consensus*
+
+- **[A Multi-Agent LLM Defense Pipeline Against Prompt Injection Attacks](https://arxiv.org/abs/2509.14285)** (2025) `D3,D6` `direct,indirect` `inference-layer`
+  Multi-agent pipeline where specialized LLMs collaboratively detect and neutralize prompt injection attacks.
+
+- **[RedVisor: Reasoning-Aware Prompt Injection Defense via Zero-Copy KV Cache Reuse](https://arxiv.org/abs/2602.01795)** (2026) `D5,D6` `indirect` `inference-layer,system-arch`
+  Defends against prompt injection by isolating trusted reasoning from untrusted context via KV cache separation.
 
 - **[MELON: Indirect Prompt Injection Defense via Masked Re-execution and Tool Comparison](https://arxiv.org/abs/2502.05174)** (2025) `D6` `indirect` `inference-layer`
   Re-executes tasks with masked tool outputs and detects injections by comparing execution traces.
