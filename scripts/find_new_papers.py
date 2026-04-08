@@ -9,6 +9,7 @@ Outputs a markdown report for use in a GitHub Issue.
 
 No API keys required.
 """
+import os
 import sys
 import time
 import yaml
@@ -22,7 +23,7 @@ HEADERS = {"User-Agent": "awesome-ipi-defense/1.0 (citation-tracker)"}
 
 # Only track seed papers with ArXiv IDs (Semantic Scholar lookup requires an ID)
 MIN_CITATIONS = 0   # include all seed papers with arxiv IDs
-LOOKBACK_DAYS = 35  # look for citing papers published in last 35 days
+LOOKBACK_DAYS = int(os.environ.get("LOOKBACK_DAYS", "8"))  # default 8 days for weekly runs
 
 
 def load_existing(path: Path) -> tuple[set, set]:
